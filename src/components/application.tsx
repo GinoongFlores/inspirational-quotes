@@ -24,7 +24,13 @@ const Application = () => {
 
   return (
     <main className="mx-auto w-full max-w-2xl py-16">
-      <Quotes>
+      <Quotes
+        count={count}
+        onSubmit={async (e) => {
+          const quotes = await fetchQuotes(count);
+          setQuotes(quotes);
+        }}
+      >
         <div className="grid grid-cols-2 gap-4">
           {quotes.map((quote) => (
             <InspirationalQuote
