@@ -21,11 +21,10 @@ export const fetchQuotes = async (count: number) => {
 
 const Application = () => {
   const [quotes, setQuotes] = useState<Quote[]>([]); // the ([]) means that the initial value is an empty array and the <Quote[]> means that the array will contain objects of type Quote
-  const [count, setCount] = useState(5);
 
   return (
     <main className="mx-auto w-full max-w-2xl py-16">
-      <Quotes count={count} onSubmit={() => fetchQuotes(count).then(setQuotes)}>
+      <Quotes setQuotes={setQuotes}>
         {quotes.map((quote) => (
           <InspirationalQuote
             key={quote.id}
